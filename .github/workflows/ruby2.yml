@@ -44,3 +44,10 @@ jobs:
 
     - name: Run tests
       run: bundle exec rspec
+      
+    - name: Upload
+      uses: actions/upload-artifact@v2 # Specify the action to use
+      if: failure() # Run only when it fails.
+      with:
+        name: my-uploads
+        path: tmp/screenshots/ # Path to upload (relative to Rails root)
